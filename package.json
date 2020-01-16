@@ -1,0 +1,27 @@
+{
+  "name": "nude-storybook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@storybook/theming": "^5.2.8",
+    "lockr": "^0.8.5",
+    "numl": "0.10.0-beta.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@storybook/addon-storysource": "^5.2.8",
+    "@storybook/addon-viewport": "^5.2.8",
+    "@storybook/html": "^5.2.8",
+    "babel-loader": "^8.0.6",
+    "storybook-addon-responsive-views": "^2.3.0"
+  }
+}

@@ -1,0 +1,26 @@
+<script src="https://cdn.jsdelivr.net/npm/numl/dist/numl.js"></script>
+<script>
+document.querySelector('html').classList.add('nu-prefers-color-scheme');
+
+setTimeout(() => {
+  document.querySelector('body').classList.add('nu-prevent-defaults');
+});
+
+setTimeout(() => {
+  function fixBg() {
+    const el = document.querySelector('body > div:last-child');
+
+    if (el) {
+      el.style.backgroundColor = 'var(--nu-bg-color)';
+    } else {
+      setTimeout(fixBg, 50);
+    }
+  }
+
+  document.querySelector('.sidebar-header img').classList.add('nu-dark-invert');
+  document.querySelector('body')
+    .addEventListener('click', () => {
+      setTimeout(fixBg, 50);
+    });
+}, 1000);
+</script>
