@@ -89,33 +89,40 @@ function initPage() {
   root.removeAttribute('hide');
 
   const runtime = Nude.getElementById('runtime');
-  const source = Nude.getElementById('content');
+  const content = Nude.getElementById('content');
 
   const runtimeCode = runtime.querySelector('textarea');
 
-  let runtimeCodeCache;
+  let runtimeCodeCache = '';
 
   runtimeCode.textContent = '';
 
   function updateRuntime() {
-    const newRuntimeCode = source.innerHTML.trim().replace(/=""/g, '');
+    if (Lockr.get('nav:value') === 'runtime') {
+      let newRuntimeCode = content.innerHTML.trim()
+        .replace(/=""/g, '');
 
-    if (runtimeCodeCache === newRuntimeCode) return;
+      if (newRuntimeCode.includes('<textarea>')) {
+        newRuntimeCode = '';
+      }
 
-    runtimeCode.textContent = newRuntimeCode;
+      if (runtimeCodeCache === newRuntimeCode) return;
 
-    runtimeCodeCache = runtimeCode.textContent;
+      runtimeCode.textContent = newRuntimeCode || '';
+
+      runtimeCodeCache = runtimeCode.textContent || '';
+    }
   }
 
   const nav = Nude.getElementById('nav');
 
-  nav.setAttribute('value', localStorage.getItem('nav:value') || 'none');
+  nav.setAttribute('value', Lockr.get('nav:value') || 'none');
 
   nav.addEventListener('input', (event) => {
-    localStorage.setItem('nav:value', event.detail);
+    Lockr.set('nav:value', event.detail);
   });
 
-  setInterval(updateRuntime, 500);
+  setInterval(updateRuntime, 2000);
 
   updateRuntime();
 
@@ -225,8 +232,6 @@ function initPage() {
 export function wrapper(template) {
   template = template.trim();
 
-  const padding = template.split('\n').length * 2;
-
   setTimeout(initPage, 100);
 
   return `
@@ -237,13 +242,15 @@ export function wrapper(template) {
   <nu-theme id="options-theme" hue="252"></nu-theme>
   <nu-attrs
     for="section"
-    height="clamp(initial, 21x, 21x)" padding="1x 2x" overflow="auto"></nu-attrs>
+    height="clamp(initial, 22x, 22x)" padding="1x 2x" overflow="auto"></nu-attrs>
   
-  <nu-block padding="${padding} bottom" id="content">
-    ${template}  
-  </nu-block>
+  <nu-flow padding="24x bottom" id="content" gap="2x">
+    ${template}
+  </nu-flow>
   
-  <nu-block border="top" radius="0" place="bottom" width="100vw" fill style="position: fixed;">
+  <nu-block
+    border="top color(special)" radius="0" width="100vw"
+    fill place="fixed bottom" z="999">
     <nu-theme hue="252"></nu-theme>
     <nu-tablist value="none" border="bottom inside" padding="0 2x" id="nav">
       <nu-tab value="none">
@@ -260,15 +267,17 @@ export function wrapper(template) {
       </nu-tab>
     </nu-tablist>
     
-    <nu-code as="section" id="source">
-      <textarea>${template}</textarea>
+    <nu-code as="section" id="source" hidden enumerate>
+      <textarea>${template
+        .replace('<', '&lt;')
+        .replace('>', '&gt;')}</textarea>
     </nu-code>
     
-    <nu-code as="section" id="runtime">
+    <nu-code as="section" id="runtime" hidden enumerate>
       <textarea></textarea>
     </nu-code>
     
-    <nu-block as="section" id="options">
+    <nu-block as="section" id="options" hidden>
       <nu-flex gap="2x" flow="row wrap" items-grow="1">
         <nu-card padding="1x 2x">
           <nu-radiogroup id="scheme" display="flex" flow="column" gap value="auto">
@@ -336,7 +345,7 @@ export function wrapper(template) {
             <nu-btngroup id="theme-type" value="main" size="xs" items-padding>
               <nu-btn value="main">Main</nu-btn>
               <nu-btn value="tint">Tint</nu-btn>
-              <nu-btn value="toned">Toned</nu-btn>
+              <nu-btn value="tone">Tone</nu-btn>
               <nu-btn value="swap">Swap</nu-btn>
               <nu-btn value="special">Special</nu-btn>
             </nu-btngroup>
