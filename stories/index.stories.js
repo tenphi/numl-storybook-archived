@@ -208,20 +208,22 @@ export const tooltips = () => {
 <nu-card>
   <nu-attrs
     for="fancy-tooltip"
-    opacity=".5 :show[1]"
-    border="0 :show[1b]"
-    size="md :show[xs]"
+    opacity="^ :tooltip:empty[1] :empty[.5] 1"
+    border="^ :tooltip:empty[1b] :empty[0] 1b"
+    size="^ :tooltip:empty[xs] :empty[md] xs"
     radius="1r 1r 0 0"
-    move="1r 4.5x :show[1r 0]"
+    move="^ :tooltip:empty[1r 0] :empty[1r 4.5x] 1r 0"
     transition="move, size, border, color"
-    fill="clear :show[input]"
-    color="focus :show[text]"
+    fill="^ :tooltip:empty[input] :empty[clear] input"
+    color="^ :tooltip:empty[text] :empty[focus] text"
     shadow="0"
     text="nowrap"
     place="outside-top left"></nu-attrs>
 
   <nu-input placeholder="">
-    <nu-tooltip as="fancy-tooltip">Your name</nu-tooltip>  
+    <nu-tooltip as="fancy-tooltip">
+      Your name
+    </nu-tooltip>  
   </nu-input>
 </nu-card>
 `);
