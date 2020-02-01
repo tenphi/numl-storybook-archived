@@ -254,7 +254,7 @@ export const popups = () => {
 <nu-flow gap>
   <nu-heading level="4">Parent overflow</nu-heading>
   <nu-block>
-    Popups use <nu-mark>fixed</nu-mark> position by default so they can ignore <nu-mark>overflow: hidden</nu-mark> on parent elements.
+    You can use <nu-mark>fixate mixin</nu-mark> for Popups so they can ignore <nu-mark>overflow: hidden</nu-mark> on parent elements.
   </nu-block>
   <nu-card overflow="no" gap>
     <nu-block>
@@ -264,7 +264,7 @@ export const popups = () => {
       <nu-btn special>
         <nu-el text="monospace">[drop="down"]</nu-el>
         <nu-icon as="icon"></nu-icon>
-        <nu-popup theme="tone">
+        <nu-popup theme="tone" drop="down">
           Popup content 
         </nu-popup>  
       </nu-btn>
