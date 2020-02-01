@@ -135,31 +135,96 @@ export const tooltips = () => {
   return $(`
 <nu-heading level="4">Tooltips</nu-heading>
 <nu-block>
-  Tooltips use fixed position by default so they can ignore overflow: hidden on parent elements.
+  You can add description to the element via tooltip.
 </nu-block>
-<nu-card overflow="no">
+<nu-card>
   <nu-flex flow="column" items="center" gap>
     <nu-badge>
       Hover zone UP
-      <nu-tooltip text="nowrap" drop="up">It's tooltip!</nu-tooltip>
+      <nu-tooltip text="nowrap" place="outside-top">It's tooltip!</nu-tooltip>
     </nu-badge>
     
     <nu-badge>
       Hover zone RIGHT
-      <nu-tooltip text="nowrap" drop="right">It's tooltip!</nu-tooltip>
+      <nu-tooltip text="nowrap" place="outside-right">It's tooltip!</nu-tooltip>
     </nu-badge>
     
     <nu-badge>
       Hover zone DOWN
-      <nu-tooltip text="nowrap" drop="down">It's tooltip!</nu-tooltip>
+      <nu-tooltip text="nowrap" place="outside-bottom">It's tooltip!</nu-tooltip>
     </nu-badge>
     
     <nu-badge>
       Hover zone LEFT
-      <nu-tooltip text="nowrap" drop="left">It's tooltip!</nu-tooltip>
+      <nu-tooltip text="nowrap" place="outside-left">It's tooltip!</nu-tooltip>
     </nu-badge>
   </nu-flex>
-</nu-card>`);
+</nu-card>
+
+<nu-heading level="4">Parent overflow</nu-heading>
+<nu-block>
+  You can use <nu-mark>fixate mixin</nu-mark> for Tooltips so they can ignore <nu-mark>overflow: hidden</nu-mark> on parent elements.
+</nu-block>
+<nu-card overflow="no" gap padding="1x 2x">
+  <nu-block>
+    Card with <nu-mark>overflow: hidden</nu-mark>. 
+  </nu-block>
+  <nu-block>
+    <nu-flex gap>
+      <nu-badge>
+        Fixate Mixin
+        <nu-tooltip text="nowrap" drop="down">It's tooltip!</nu-tooltip>
+      </nu-badge>
+      <nu-badge>
+        No Fixate Mixin
+        <nu-tooltip text="nowrap" place="outside-bottom">It's tooltip!</nu-tooltip>
+      </nu-badge>
+    </nu-flex>  
+  </nu-block>
+</nu-card>
+
+<nu-heading level="4">Parent overflow</nu-heading>
+<nu-block>
+  Tooltips of active elements are also shown on focus.
+</nu-block>
+<nu-card overflow="no" gap>
+  <nu-block>
+    <nu-btn padding>
+      Button with tooltip
+      <nu-tooltip place="outside-right" text="nowrap">Button tooltip</nu-tooltip>
+    </nu-btn>
+  </nu-block>
+  <nu-block>
+    <nu-input placeholder="Input with tooltip">
+      <nu-tooltip place="outside-right" text="nowrap">Input tooltip</nu-tooltip>
+    </nu-input>
+  </nu-block>
+</nu-card>
+
+<nu-heading level="4">Advanced usage</nu-heading>
+<nu-block>
+  Use tooltips to make fancy placeholders.
+</nu-block>
+<nu-card>
+  <nu-attrs
+    for="fancy-tooltip"
+    opacity=".5 :show[1]"
+    border="0 :show[1b]"
+    size="md :show[xs]"
+    radius="1r 1r 0 0"
+    move="1r 4.5x :show[1r 0]"
+    transition="move, size, border, color"
+    fill="clear :show[input]"
+    color="focus :show[text]"
+    shadow="0"
+    text="nowrap"
+    place="outside-top left"></nu-attrs>
+
+  <nu-input placeholder="">
+    <nu-tooltip as="fancy-tooltip">Your name</nu-tooltip>  
+  </nu-input>
+</nu-card>
+`);
 };
 
 export const lines = () => {

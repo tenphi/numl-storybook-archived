@@ -250,7 +250,7 @@ export function wrapper(template) {
   
   <nu-block
     border="top color(special)" radius="0" width="100vw"
-    fill place="fixed bottom" z="999">
+    fill place="fixed bottom" z="9999">
     <nu-theme hue="252"></nu-theme>
     <nu-tablist value="none" border="bottom inside" padding="0 2x" id="nav">
       <nu-tab value="none">
