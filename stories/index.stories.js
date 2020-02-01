@@ -259,7 +259,7 @@ export const codeSnippets = () => {
 
 <nu-heading level="4">Code block in Shadow DOM</nu-heading>
 
-<nu-code shadow-root>
+<nu-code shady>
   <pre>
     const str = 'String';
     const num = 123;
@@ -336,7 +336,7 @@ export const markdownConverter = () => {
   </pre>
 </nu-markdown>
 
-<nu-markdown shadow-root>
+<nu-markdown shady>
   <pre>
     #### Markdown in Shadow DOM
 
