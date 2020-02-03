@@ -72,6 +72,15 @@ export const sliders = () => {
 
 <nu-line></nu-line>
 
+<nu-heading level="4">Disabled slider</nu-heading>
+<nu-flex gap items="center">
+  <nu-rail width="clamp(initial, 20, 100%)" disabled>
+    <nu-slider value="20"></nu-slider>
+  </nu-rail>
+</nu-flex>
+
+<nu-line></nu-line>
+
 <nu-heading level="4">Vertical slider</nu-heading>
 <nu-rail height="6" orient="v">
   <nu-slider value="40"></nu-slider>
@@ -80,9 +89,12 @@ export const sliders = () => {
 <nu-line></nu-line>
 
 <nu-heading level="4">Slider with min and max attributes</nu-heading>
-<nu-rail width="clamp(initial, 20, 100%)">
-  <nu-slider value="15" min="10" max="20"></nu-slider>
-</nu-rail>
+<nu-block>
+  <nu-rail width="clamp(initial, 20, 100%)">
+    <nu-slider value="15" min="10" max="20"></nu-slider>
+  </nu-rail>
+  <nu-label>Slider</nu-label>
+</nu-block>
 
 <nu-line></nu-line>
 
@@ -493,6 +505,10 @@ export const textInputs = () => {
 
 <nu-block>
   <nu-input width="15" label="Simple input">
+
+  </nu-input>
+  
+  <nu-input width="15" label="Simple disabled input" disabled>
 
   </nu-input>
 </nu-block>

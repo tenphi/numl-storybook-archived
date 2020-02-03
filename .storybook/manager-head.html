@@ -6,7 +6,13 @@ setTimeout(() => {
   document.querySelector('body').classList.add('nu-prevent-defaults');
 });
 
-setTimeout(() => {
+setTimeout(function initPage() {
+  if (!document.querySelector('.sidebar-header img')) {
+    setTimeout(initPage, 500);
+
+    return;
+  }
+
   function fixBg() {
     const el = document.querySelector('body > div:last-child');
 

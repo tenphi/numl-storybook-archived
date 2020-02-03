@@ -3,7 +3,7 @@ import { wrapper } from '../utils';
 const $ = wrapper;
 
 export default {
-  title: 'Theme System',
+  title: 'Themes',
 };
 
 export const Types = () => {

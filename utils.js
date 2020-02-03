@@ -244,7 +244,7 @@ export function wrapper(template) {
     for="section"
     height="clamp(initial, 22x, 22x)" padding="1x 2x" overflow="auto"></nu-attrs>
   
-  <nu-flow padding="24x bottom" id="content" gap="2x">
+  <nu-flow padding="26x bottom" id="content" gap="2x">
     ${template}
   </nu-flow>
   

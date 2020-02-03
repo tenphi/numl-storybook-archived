@@ -246,6 +246,8 @@ export const lines = () => {
 
 export const codeSnippets = () => {
   return $(`
+<nu-attrs for="mark" theme="tone"></nu-attrs>
+
 <nu-heading>Code snippets</nu-heading>
 
 <nu-block>To add HTML tags to <nu-mark>nu-code</nu-mark> please use <nu-mark>&lt;textarea&gt;</nu-mark> tag instead of <nu-mark>&lt;pre&gt;</nu-mark>.</nu-block>
